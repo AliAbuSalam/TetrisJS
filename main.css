@@ -17,8 +17,8 @@ body {
   color: white;
 
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(40, 50px);
+  grid-template-columns: repeat(10, var(--block-size));
+  grid-template-rows: repeat(40, var(--block-size));
   column-gap: 0;
   row-gap: 0;
 }
