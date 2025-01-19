@@ -1,10 +1,15 @@
+:root {
+  --field-height: 80vh;
+  --field-width: calc(var(--field-height)/2);
+  --block-size: calc(var(--field-height)/20);
+}
 body {
   background-color: black;
 }
 
 .field {
-  width: 40%;
-  height: 97vh;
+  width: var(--field-width);
+  height: var(--field-height);
   margin: auto;
   
   border: solid 5px;
@@ -19,9 +24,9 @@ body {
 }
 
 .field-block {
-  outline: 2px solid white;
-  width: 50px;
-  height: 50px;
+  outline: 1px solid white;
+  width: var(--block-size);
+  height: var(--block-size);
   margin: 0;
   padding: 0;
 }
