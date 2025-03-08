@@ -1,3 +1,2 @@
-import generateField from "./fieldGenerator";
-
-generateField(400);
+import generateField from './fieldGenerator.js'
+generateField(20,20,10);
