@@ -11,7 +11,7 @@ const generateField = (rows, hiddenRows, columns) => {
       const blockNumber = document.createTextNode(`${(i * 10) + (j + 1)}`);
       block.appendChild(blockNumber);
       block.className = 'field-block';
-      block.id = `block${(i * 10) + (j + 1)}`;
+      block.id = `block-${(i * 10) + (j + 1)}`;
       row.appendChild(block); 
     }
     fieldContainer.appendChild(row);
