@@ -1,7 +1,9 @@
 :root {
+  --number-of-visible-rows: 20;
+  --number-of-columns: 10;
   --field-height: 80vh;
-  --field-width: calc(var(--field-height)/2);
-  --block-size: calc(var(--field-height)/20);
+  --block-size: calc(var(--field-height)/var(--number-of-visible-rows));
+  --field-width: calc(var(--block-size) * var(--number-of-columns));
 }
 body {
   background-color: black;
@@ -16,11 +18,16 @@ body {
   border-color: yellow;
   color: white;
 
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(10, var(--block-size));
   grid-template-rows: repeat(40, var(--block-size));
   column-gap: 0;
-  row-gap: 0;
+  row-gap: 0; */
+}
+
+.field > div {
+  display: flex;
+  flex-direction: row;
 }
 
 .field-block {
