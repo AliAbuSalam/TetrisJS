@@ -3,10 +3,10 @@ class Row {
     this.id = `row-${rowNumber}`;
 
     const getBlockElements = (rowNumber) => {
-      const blockArray = [];
+      const blockArray = new Map();
       for(let i = 1; i <= 10; i++){
         const block = Document.GetElementById(rowNumber * 10 + i);
-        blockArray.push(block);
+        blockArray.set(i, block);
       }
       return blockArray;
     }
@@ -14,3 +14,5 @@ class Row {
     this.blocks = getBlockElements(rowNumber);
   }
 }
+
+export default Row;
