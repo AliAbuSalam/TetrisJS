@@ -1,12 +1,12 @@
 class Row {
-  constructor(rowNumber){
+  constructor(rowNumber, columnNumber){
     this.id = `row-${rowNumber}`;
-    this.rowElement = Document.createElement('div');
+    this.rowElement = document.createElement('div');
 
     const createBlockElements = (rowNumber, columnNumber) => {
       const blockArray = new Map();
       for(let i = 1; i <= columnNumber; i++){
-        const block = Document.createElement('div');
+        const block = document.createElement('div');
         block.id = `block-${(rowNumber * columnNumber) + i}`;
         const blockNumber= document.createTextNode(`${(rowNumber * columnNumber) + i}`);
         block.appendChild(blockNumber);
@@ -17,7 +17,7 @@ class Row {
       return blockArray;
     }
     
-    this.blocks = createBlockElements(rowNumber);
+    this.blocks = createBlockElements(rowNumber, columnNumber);
   }
 }
 
