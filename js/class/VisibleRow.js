@@ -1,8 +1,7 @@
-import Row from "./Row";
+import Row from "./Row.js";
 
-class VisibleRow extends Row(){
+class VisibleRow extends Row {
   constructor(rowNumber){
-    console.log('create new object VisibleRow')
     super(rowNumber);
     this.className = 'visible-row'
   }
