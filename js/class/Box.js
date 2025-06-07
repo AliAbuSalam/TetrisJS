@@ -3,7 +3,7 @@ class Box {
     this.coordinates = coordinates;
     // this.width = size;
     // this.height = size;
-    this.occupied = false
+    this.currentState = 'empty'
 
     this.element = document.createElement('div');
     this.id = `block-${id}`;
@@ -14,11 +14,14 @@ class Box {
   }
 
   get location() {
-    return this.coordinates
+    return this.coordinates;
   }
 
-  changeColor(color){
-    
+  changeState(state){
+    if(state === 'empty'){
+      this.element.classList.remove(currentState);
+      this.element.classList.add(state);
+    }
   }
 }
 
