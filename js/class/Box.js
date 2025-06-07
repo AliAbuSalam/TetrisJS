@@ -18,10 +18,8 @@ class Box {
   }
 
   changeState(state){
-    if(state === 'empty'){
-      this.element.classList.remove(currentState);
-      this.element.classList.add(state);
-    }
+    this.element.classList.remove(currentState);
+    this.element.classList.add(state);
   }
 }
 
