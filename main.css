@@ -37,3 +37,27 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.empty {
+  background-color: none;
+}
+
+.piecei {
+  background-color: #a31f15;
+}
+
+.piecej {
+  background-color: #4a74f0;
+}
+
+.piecel {
+  background-color: #4af78d;
+}
+
+.pieceo {
+  background-color: #f7f440;
+}
+
+.pieces {
+  background-color: #78209e;
+}
