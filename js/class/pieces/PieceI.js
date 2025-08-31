@@ -1,4 +1,4 @@
-import Piece from './Piece';
+import Piece from './Piece.js';
 
 class PieceI extends Piece {
   constructor(coordinates){
@@ -13,3 +13,5 @@ class PieceI extends Piece {
     
   }
 }
+
+export default PieceI;

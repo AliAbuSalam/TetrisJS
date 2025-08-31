@@ -1,4 +1,4 @@
-import Piece from './Piece';
+import Piece from './Piece.js';
 
 //Box-shaped Piece
 class PieceO extends Piece {
@@ -14,3 +14,5 @@ class PieceO extends Piece {
 
   }
 }
+
+export default PieceO;

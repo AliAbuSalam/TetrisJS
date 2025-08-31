@@ -1,4 +1,4 @@
-import Piece from './Piece';
+import Piece from './Piece.js';
 
 class PieceL extends Piece {
   constructor(coordinates){
@@ -8,3 +8,5 @@ class PieceL extends Piece {
   rotate(){}
   move(){}
 }
+
+export default PieceL;
