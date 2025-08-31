@@ -9,3 +9,5 @@ class Piece {
     throw new Error('Method rotate() must be implemented')
   }
 }
+
+export default Piece;
