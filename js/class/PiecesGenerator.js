@@ -21,7 +21,34 @@ class PiecesGenerator {
   }
 
   generatePiece(){
-    
+    if(!this.poolOfPieces.length){
+      this.generateNewPool();
+    }
+    const pieceType = this.poolOfPieces.shift();
+    let piece;
+    switch(pieceType){
+      case 'I':
+        piece = new IPiece();
+        return;
+      case 'J':
+        piece = new JPiece();
+        return;
+      case 'L':
+        piece = new LPiece();
+        return;
+      case 'O':
+        piece = new OPiece();
+        return;
+      case 'S':
+        piece = new SPiece();
+        return;
+      case 'T':
+        piece = new TPiece();
+        return;
+      case 'Z':
+        piece = new TPiece();
+        return;
+    }
   }  
 }
 
