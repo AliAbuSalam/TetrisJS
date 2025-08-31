@@ -10,7 +10,6 @@ class PiecesGenerator {
   poolOfPieces = [];
 
   generateNewPool(){
-    console.log('generating new pool')
     const arrayOfPieces = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
     const arrayOfPiecesLength = arrayOfPieces.length;
     for(let i = 0; i < arrayOfPiecesLength; i++){
@@ -19,8 +18,6 @@ class PiecesGenerator {
       this.poolOfPieces.push(piece)
       arrayOfPieces.splice(arrayIndex, 1);
     }
-    console.log('arrayOfPieces: ', arrayOfPieces)
-    console.log('poolOfPieces: ', this.poolOfPieces);
   }
 
   generatePiece(){
