@@ -1,3 +1,5 @@
+import Piece from './Piece';
+
 //Box-shaped Piece
 class PieceO extends Piece {
   constructor(coordinates) {
