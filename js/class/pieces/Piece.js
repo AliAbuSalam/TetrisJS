@@ -13,7 +13,7 @@ class Piece {
     return this.name;
   }
 
-  getCoordinates(){
+  getLocation(){
     return [...this.location];
   }
 
