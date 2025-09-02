@@ -28,6 +28,10 @@ class Piece {
   moveLeft(){
     this.location = this.location.map(c => c - 1);
   }
+
+  moveRight(){
+    this.location = this.location.map(c => c + 1);
+  }
 }
 
 export default Piece;
