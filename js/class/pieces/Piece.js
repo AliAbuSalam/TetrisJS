@@ -24,6 +24,10 @@ class Piece {
   moveDown(){
     this.location = this.location.map(c => c - NUMBER_OF_COLUMNS);
   }
+
+  moveLeft(){
+    this.location = this.location.map(c => c - 1);
+  }
 }
 
 export default Piece;
