@@ -6,6 +6,7 @@ class Field {
   static spawnCoordinates = (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1)*NUMBER_OF_COLUMNS + (Math.ceil(NUMBER_OF_COLUMNS/2));
   rightBound = [];
   leftBound = [];
+  bottomBound = [];
 
   constructor(rows, columns, hiddenRows){
     this.field = document.getElementsByClassName('field')[0];
@@ -32,6 +33,12 @@ class Field {
       if(i === 1) this.leftBound.push(i);
       i +=NUMBER_OF_COLUMNS;
       if(i <= numberOfBlocks) this.leftBound.push(i);
+    }
+
+    i = 1;
+    while(i <= NUMBER_OF_COLUMNS){
+      this.bottomBound.push(i);
+      i++;
     }
   }
 
