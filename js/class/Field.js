@@ -17,9 +17,10 @@ class Field {
       this.field.appendChild(rowObj.rowElement);
     }
 
+    const numberOfBlocks = (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS)*NUMBER_OF_COLUMNS;
     //finding right bound of the field
     let i = 0;
-    while(i < (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS)*NUMBER_OF_COLUMNS){ //total number of blocks in field
+    while(i < numberOfBlocks){
       i += NUMBER_OF_COLUMNS
       this.rightBound.push(i);
     }
