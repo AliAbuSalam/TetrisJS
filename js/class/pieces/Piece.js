@@ -6,6 +6,10 @@ class Piece {
     }
   }
 
+  getName(){
+    return this.name;
+  }
+
   rotate(){
     throw new Error('Method rotate() must be implemented')
   }
