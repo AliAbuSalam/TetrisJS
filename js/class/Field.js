@@ -31,7 +31,7 @@ class Field {
     while(i < numberOfBlocks){
       if(i === 1) this.leftBound.push(i);
       i +=NUMBER_OF_COLUMNS;
-      this.leftBound.push(i);
+      if(i <= numberOfBlocks) this.leftBound.push(i);
     }
   }
 
