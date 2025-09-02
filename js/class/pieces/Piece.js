@@ -10,6 +10,10 @@ class Piece {
     return this.name;
   }
 
+  getCoordinates(){
+    return [...this.location];
+  }
+
   rotate(){
     throw new Error('Method rotate() must be implemented')
   }
