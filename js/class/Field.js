@@ -38,6 +38,10 @@ class Field {
   getRightBound(){
     return [...this.rightBound];
   }
+
+  getLeftBound(){
+    return [...this.leftBound];
+  }
 } 
 
 export default Field;
