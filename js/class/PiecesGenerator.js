@@ -5,9 +5,11 @@ import OPiece from './pieces/PieceO.js';
 import SPiece from './pieces/PieceS.js';
 import TPiece from './pieces/PieceT.js';
 import ZPiece from './pieces/PieceZ.js';
+import { NUMBER_OF_VISIBLE_ROWS, NUMBER_OF_HIDDEN_ROWS, NUMBER_OF_COLUMNS } from '../CONSTANTS.js';
 
 class PiecesGenerator {
   poolOfPieces = [];
+  static spawnCoordinates = (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1)*NUMBER_OF_COLUMNS + (Math.ceil(NUMBER_OF_COLUMNS/2));
 
   generateNewPool(){
     const arrayOfPieces = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
@@ -28,27 +30,28 @@ class PiecesGenerator {
     let piece;
     switch(pieceType){
       case 'I':
-        piece = new IPiece();
-        return;
+        piece = new IPiece(this.spawnCoordinates);
+        break;
       case 'J':
-        piece = new JPiece();
-        return;
+        piece = new JPiece(this.spawnCoordinates);
+        break;
       case 'L':
-        piece = new LPiece();
-        return;
+        piece = new LPiece(this.spawnCoordinates);
+        break;
       case 'O':
-        piece = new OPiece();
-        return;
+        piece = new OPiece(this.spawnCoordinates);
+        break;
       case 'S':
-        piece = new SPiece();
-        return;
+        piece = new SPiece(this.spawnCoordinates);
+        break;
       case 'T':
-        piece = new TPiece();
-        return;
-      case 'Z':
-        piece = new TPiece();
-        return;
+        piece = new TPiece(this.spawnCoordinates);
+        break;
+      default:
+        piece = new ZPiece(this.spawnCoordinates);
+        break;
     }
+    return piece;
   }  
 }
 
