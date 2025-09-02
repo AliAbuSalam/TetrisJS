@@ -5,6 +5,7 @@ import { NUMBER_OF_COLUMNS, NUMBER_OF_VISIBLE_ROWS, NUMBER_OF_HIDDEN_ROWS } from
 class Field {
   static spawnCoordinates = (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1)*NUMBER_OF_COLUMNS + (Math.ceil(NUMBER_OF_COLUMNS/2));
   rightBound = [];
+  leftBound = [];
 
   constructor(rows, columns, hiddenRows){
     this.field = document.getElementsByClassName('field')[0];
@@ -23,6 +24,14 @@ class Field {
     while(i < numberOfBlocks){
       i += NUMBER_OF_COLUMNS
       this.rightBound.push(i);
+    }
+
+    //finding left bound of the field
+    i = 1;
+    while(i < numberOfBlocks){
+      if(i === 1) this.leftBound.push(i);
+      i +=NUMBER_OF_COLUMNS;
+      this.leftBound.push(i);
     }
   }
 
