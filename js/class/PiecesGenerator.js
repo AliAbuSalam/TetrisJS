@@ -30,25 +30,25 @@ class PiecesGenerator {
     let piece;
     switch(pieceType){
       case 'I':
-        piece = new IPiece(this.spawnCoordinates);
+        piece = new IPiece(PiecesGenerator.spawnCoordinates);
         break;
       case 'J':
-        piece = new JPiece(this.spawnCoordinates);
+        piece = new JPiece(PiecesGenerator.spawnCoordinates);
         break;
       case 'L':
-        piece = new LPiece(this.spawnCoordinates);
+        piece = new LPiece(PiecesGenerator.spawnCoordinates);
         break;
       case 'O':
-        piece = new OPiece(this.spawnCoordinates);
+        piece = new OPiece(PiecesGenerator.spawnCoordinates);
         break;
       case 'S':
-        piece = new SPiece(this.spawnCoordinates);
+        piece = new SPiece(PiecesGenerator.spawnCoordinates);
         break;
       case 'T':
-        piece = new TPiece(this.spawnCoordinates);
+        piece = new TPiece(PiecesGenerator.spawnCoordinates);
         break;
       default:
-        piece = new ZPiece(this.spawnCoordinates);
+        piece = new ZPiece(PiecesGenerator.spawnCoordinates);
         break;
     }
     return piece;
