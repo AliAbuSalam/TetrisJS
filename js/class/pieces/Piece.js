@@ -1,4 +1,5 @@
 class Piece {
+  name = 'Tetris Piece'
   constructor(){
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
