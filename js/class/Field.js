@@ -49,6 +49,10 @@ class Field {
   getLeftBound(){
     return [...this.leftBound];
   }
+
+  getBottomBound(){
+    return [...this.bottomBound];
+  }
 } 
 
 export default Field;
