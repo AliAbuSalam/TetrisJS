@@ -2,6 +2,7 @@ import Piece from './Piece.js';
 
 class PieceI extends Piece {
   constructor(coordinates){
+    super();
     this.name = 'I Piece';
     this.location = [coordinates, coordinates+1, coordinates+2, coordinates+3];
   }
