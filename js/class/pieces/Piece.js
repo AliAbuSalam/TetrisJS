@@ -5,10 +5,11 @@ class Piece {
   location = [];
   state = 'default';
   pivotPoint;
-  constructor(){
+  constructor(coordinates){
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
     }
+    this.pivotPoint = coordinates;
   }
 
   getName(){
