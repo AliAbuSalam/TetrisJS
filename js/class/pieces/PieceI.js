@@ -9,14 +9,12 @@ class PieceI extends Piece {
   }
 
   rotate(){
-    const pp = this.pivotPoint //shortening pivotPoint;
-    if(state === 'default'){
-      this.location = [pp - 1, pp, pp + 1, pp + 2];
-      this.state = 'rotated';
-    } else {
-      this.location = [pp + NUMBER_OF_COLUMNS, pp, pp-1*NUMBER_OF_COLUMNS, pp-2*NUMBER_OF_COLUMNS]
-      this.state = 'default';
+    const pp = this.pivotPoint
+    const objectShapePerState = {
+      default: [pp - 1, pp, pp + 1, pp + 2],
+      rotated: [pp + NUMBER_OF_COLUMNS, pp, pp - 1*NUMBER_OF_COLUMNS, pp - 2*NUMBER_OF_COLUMNS]
     }
+    super(objectShapePerState);
     return [...this.location];
   }
 
