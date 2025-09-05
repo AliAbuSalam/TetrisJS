@@ -9,13 +9,11 @@ class PieceJ extends Piece {
 
   rotate(){
     const pp = this.pivotPoint;
-    if(state === 'default'){
-      this.location = [pp + 20, pp + 10, pp, pp - 1];
-      this.state = 'rotated';
-    } else {
-      this.location = [pp + 10, pp, pp + 1, pp + 2];
-      this.state = 'default';
+    const objectShapePerState = {
+      default: [pp + 10, pp , pp + 1, pp + 2],
+      rotated: [pp + 20, pp + 10, pp, pp - 1]
     }
+    super.rotate(objectShapePerState);
     return [...this.location];
   }
 
