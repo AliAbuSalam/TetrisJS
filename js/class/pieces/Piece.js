@@ -23,7 +23,6 @@ class Piece {
   rotate(objectShapePerState){
     //objectShapePerState structure: { default: [objectShape], rotated: [objectShape] }
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
-    const pp = this.pivotPoint;
     if(state === 'default'){
       this.location = objectShapePerState.rotated;
       this.state === 'rotated';
