@@ -15,8 +15,8 @@ class PieceJ extends Piece {
     } else {
       this.location = [pp + 10, pp, pp + 1, pp + 2];
       this.state = 'default';
-      return [...this.location];
     }
+    return [...this.location];
   }
 
   move(){
