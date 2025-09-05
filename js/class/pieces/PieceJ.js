@@ -4,11 +4,19 @@ class PieceJ extends Piece {
   constructor(coordinates){
     super();
     this.name = 'J Piece';
-    this.location = [coordinates, coordinates-10, (coordinates-10)+1, (coordinates-10)+2]
+    this.location = [coordinates+10, coordinates, coordinates+1, coordinates+2]
   }
 
   rotate(){
-
+    const pp = this.pivotPoint;
+    if(state === 'default'){
+      this.location = [pp + 20, pp + 10, pp, pp - 1];
+      this.state = 'rotated';
+    } else {
+      this.location = [pp + 10, pp, pp + 1, pp + 2];
+      this.state = 'default';
+      return [...this.location];
+    }
   }
 
   move(){
