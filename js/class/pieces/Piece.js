@@ -9,7 +9,7 @@ class Piece {
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
     }
-    this.pivotPoint = coordinates;
+        this.pivotPoint = coordinates;
   }
 
   getName(){
@@ -23,12 +23,12 @@ class Piece {
   rotate(objectShapePerState){
     //objectShapePerState structure: { default: [objectShape], rotated: [objectShape] }
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
-    if(state === 'default'){
+    if(this.state === 'default'){
       this.location = objectShapePerState.rotated;
-      this.state === 'rotated';
+      this.state = 'rotated';
     } else {
       this.location = objectShapePerState.default;
-      this.state === 'default';
+      this.state = 'default';
     }
   }
 
