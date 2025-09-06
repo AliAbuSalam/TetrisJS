@@ -23,17 +23,19 @@ class Field {
     //finding right bound of the field
     let i = 0;
     while(i < numberOfBlocks){
-      i += NUMBER_OF_COLUMNS
+      i += NUMBER_OF_COLUMNS - 1;
       this.rightBound.push(i);
     }
 
     //finding left bound of the field
-    i = 1;
+    i = 0;
     while(i < numberOfBlocks){
-      if(i === 1) this.leftBound.push(i);
+      if(i === 0) this.leftBound.push(i);
       i +=NUMBER_OF_COLUMNS;
-      if(i <= numberOfBlocks) this.leftBound.push(i);
+      if(i < numberOfBlocks) this.leftBound.push(i);
     }
+
+    console.log('leftBound: ', this.leftBound);
 
     i = 1;
     while(i <= NUMBER_OF_COLUMNS){
