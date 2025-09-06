@@ -1,4 +1,5 @@
 import Piece from './Piece.js';
+import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
 
 class PieceJ extends Piece {
   constructor(coordinates){
@@ -10,8 +11,8 @@ class PieceJ extends Piece {
   rotate(){
     const pp = this.pivotPoint;
     const objectShapePerState = {
-      default: [pp + 10, pp , pp + 1, pp + 2],
-      rotated: [pp + 20, pp + 10, pp, pp - 1]
+      default: [pp + NUMBER_OF_COLUMNS, pp , pp + 1, pp + 2],
+      rotated: [pp + 2*NUMBER_OF_COLUMNS, pp + NUMBER_OF_COLUMNS, pp, pp - 1]
     }
     super.rotate(objectShapePerState);
     return [...this.location];
