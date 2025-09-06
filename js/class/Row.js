@@ -7,7 +7,7 @@ class Row {
 
     const createBlockElements = (rowNumber, columnNumber) => {
       const blockArray = new Map();
-      for(let i = 1; i <= columnNumber; i++){
+      for(let i = 0; i < columnNumber; i++){
         const block = new Box({x: rowNumber, y: i}, ((rowNumber * columnNumber) + i))
         blockArray.set(i, block);
         this.rowElement.appendChild(block.element);
