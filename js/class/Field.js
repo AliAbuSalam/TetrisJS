@@ -7,9 +7,6 @@ class Field {
     x: Math.ceil((NUMBER_OF_COLUMNS - 1)/2), // number of columns is substracted by one because the coordinates starts at 0
     y: NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1
   }
-  rightBound = [];
-  leftBound = [];
-  bottomBound = [];
 
   constructor(rows, columns, hiddenRows){
     this.field = document.getElementsByClassName('field')[0];
@@ -20,30 +17,6 @@ class Field {
     for(let i = rows - 1; i >= 0; i--){
       const rowObj = new VisibleRow(i, columns);
       this.field.appendChild(rowObj.rowElement);
-    }
-
-    const numberOfBlocks = (NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS)*NUMBER_OF_COLUMNS;
-    //finding right bound of the field
-    let i = 0;
-    while(i < numberOfBlocks){
-      i += NUMBER_OF_COLUMNS - 1;
-      this.rightBound.push(i);
-    }
-
-    //finding left bound of the field
-    i = 0;
-    while(i < numberOfBlocks){
-      if(i === 0) this.leftBound.push(i);
-      i +=NUMBER_OF_COLUMNS;
-      if(i < numberOfBlocks) this.leftBound.push(i);
-    }
-
-    console.log('leftBound: ', this.leftBound);
-
-    i = 1;
-    while(i <= NUMBER_OF_COLUMNS){
-      this.bottomBound.push(i);
-      i++;
     }
   }
 
