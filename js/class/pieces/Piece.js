@@ -33,15 +33,15 @@ class Piece {
   }
 
   moveDown(){
-    this.location = this.location.map(c => c - NUMBER_OF_COLUMNS);
+    this.location = this.location.map(c => ({...c, y: c.y - 1}))
   }
 
   moveLeft(){
-    this.location = this.location.map(c => c - 1);
+    this.location = this.location.map(c => ({...c, x: c.x - 1}));
   }
 
   moveRight(){
-    this.location = this.location.map(c => c + 1);
+    this.location = this.location.map(c => ({...c, x: c.x + 1}));
   }
 }
 
