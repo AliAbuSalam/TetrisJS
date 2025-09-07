@@ -11,6 +11,9 @@ class PiecesGenerator {
   poolOfPieces = [];
 
   generateNewPool(){
+    if(this.poolOfPieces.length > 0){
+      throw new Error('poolOfPieces is not empty yet!!!');
+    }
     const arrayOfPieces = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
     const arrayOfPiecesLength = arrayOfPieces.length;
     for(let i = 0; i < arrayOfPiecesLength; i++){
