@@ -20,10 +20,6 @@ class PieceZ extends Piece {
     // this.location = [coordinates, coordinates - 1, (coordinates -10), (coordinates - 10) + 1]
   }
 
-  rotate(){
-
-  }
-
   move(){
 
   }

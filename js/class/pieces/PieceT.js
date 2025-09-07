@@ -19,10 +19,6 @@ class PieceT extends Piece {
     }];
   }
 
-  rotate(){
-
-  }
-
   move(){
 
   }

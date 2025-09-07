@@ -19,9 +19,6 @@ class PieceS extends Piece {
     }];
   }
 
-  rotate(){
-
-  }
   move(){
     
   }

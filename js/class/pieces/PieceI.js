@@ -19,16 +19,6 @@ class PieceI extends Piece {
       }]
   }
 
-  rotate(){    
-    const pp = this.pivotPoint
-    const objectShapePerState = {
-      default: [pp + NUMBER_OF_COLUMNS, pp, pp - 1*NUMBER_OF_COLUMNS, pp - 2*NUMBER_OF_COLUMNS],
-      rotated: [pp - 1, pp, pp + 1, pp + 2],
-    }
-    super.rotate(objectShapePerState);
-    return [...this.location];
-  }
-
   move(){
     
   }

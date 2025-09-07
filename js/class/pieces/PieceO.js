@@ -20,10 +20,6 @@ class PieceO extends Piece {
     }];
   }
 
-  rotate() {
-
-  }
-
   move() {
 
   }
