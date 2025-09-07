@@ -3,9 +3,10 @@ import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
 
 class PieceJ extends Piece {
   constructor(coordinates){
-    super(coordinates);
+    super();
     this.name = 'J Piece';
     this.indexOfPivotPoint = 1;
+    console.log('coordinates:', coordinates);
     this.location = [{
       ...coordinates,
       y: coordinates.y - 1
