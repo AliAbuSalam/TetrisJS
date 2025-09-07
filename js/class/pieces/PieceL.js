@@ -5,7 +5,7 @@ class PieceL extends Piece {
   constructor(coordinates){
     super();
     this.name = 'L Piece';
-    this.indexOfPivotPoint = 1;
+    this.indexOfPivotPoint = 0;
     this.location = [{
       ...coordinates,
       y: coordinates.y - 1

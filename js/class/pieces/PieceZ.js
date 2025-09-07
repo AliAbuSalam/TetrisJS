@@ -4,7 +4,7 @@ class PieceZ extends Piece {
   constructor(coordinates){
     super();
     this.name = 'Z Piece';
-    this.indexOfPivotPoint = 1;
+    this.indexOfPivotPoint = 0;
     this.location = [{
       ...coordinates,
       y: coordinates.y - 1
