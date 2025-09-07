@@ -5,7 +5,18 @@ class PieceJ extends Piece {
   constructor(coordinates){
     super(coordinates);
     this.name = 'J Piece';
-    this.location = [coordinates+10, coordinates, coordinates+1, coordinates+2]
+    this.location = [{
+      ...coordinates,
+      y: coordinates.y - 1
+    }, {
+      ...coordinates
+    }, {
+      x: coordinates.x + 1,
+      y: coordinates.y - 1
+    }, {
+      x: coordinates.x + 2,
+      y: coordinates.y - 1
+    }];
   }
 
   rotate(){
