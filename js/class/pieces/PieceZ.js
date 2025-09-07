@@ -2,7 +2,7 @@ import Piece from './Piece.js';
 
 class PieceZ extends Piece {
   constructor(coordinates){
-    super(coordinates);
+    super();
     this.name = 'Z Piece';
     this.indexOfPivotPoint = 1;
     this.location = [{

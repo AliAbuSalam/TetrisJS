@@ -3,7 +3,7 @@ import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
 
 class PieceL extends Piece {
   constructor(coordinates){
-    super(coordinates);
+    super();
     this.name = 'L Piece';
     this.indexOfPivotPoint = 1;
     this.location = [{

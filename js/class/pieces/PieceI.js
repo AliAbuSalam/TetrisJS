@@ -3,6 +3,7 @@ import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
 
 class PieceI extends Piece {
   constructor(coordinates){
+    super();
     this.name = 'I Piece';
     this.indexOfPivotPoint = 1;
     this.location = [{

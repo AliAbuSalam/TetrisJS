@@ -3,7 +3,7 @@ import Piece from './Piece.js';
 //Box-shaped Piece
 class PieceO extends Piece {
   constructor(coordinates) {
-    super(coordinates);
+    super();
     this.name = 'O Piece';
     this.indexOfPivotPoint = 1;
     this.location = [{
