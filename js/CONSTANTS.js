@@ -5,3 +5,4 @@ export const NUMBER_OF_COLUMNS = 10;
 
 export const I_PIECE_COLOR = '#DE4B28';
 export const J_PIECE_COLOR = '#37BD1C';
+export const L_PIECE_COLOR = '#1C31BD';

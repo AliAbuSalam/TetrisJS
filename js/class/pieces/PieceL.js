@@ -1,11 +1,12 @@
 import Piece from './Piece.js';
-import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
+import { L_PIECE_COLOR } from '../../CONSTANTS.js';
 
 class PieceL extends Piece {
   constructor(coordinates){
     super();
     this.name = 'L Piece';
     this.indexOfPivotPoint = 0;
+    this.color = L_PIECE_COLOR;
     this.location = [{
       ...coordinates,
       y: coordinates.y - 1
