@@ -1,9 +1,10 @@
 class Box {
+  color;
   constructor(coordinates, /*size,*/ id){
     this.coordinates = coordinates;
     // this.width = size;
     // this.height = size;
-    this.currentState = 'empty'
+    this.currentState = 'empty';
 
     this.element = document.createElement('div');
     this.id = `block-${id}`;
@@ -17,9 +18,10 @@ class Box {
     return this.coordinates;
   }
 
-  changeState(state){
+  changeState(state, color){
     this.element.classList.remove(currentState);
     this.element.classList.add(state);
+    this.color = color;
   }
 }
 
