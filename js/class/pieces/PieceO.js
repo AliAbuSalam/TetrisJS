@@ -22,8 +22,8 @@ class PieceO extends Piece {
     }];
   }
 
-  move() {
-
+  rotate(){
+    //method is empty to prevent O Piece from rotating
   }
 }
 
