@@ -1,4 +1,5 @@
 import Piece from './Piece.js';
+import { O_PIECE_COLOR } from '../../CONSTANTS.js';
 
 //Box-shaped Piece
 class PieceO extends Piece {
@@ -6,6 +7,7 @@ class PieceO extends Piece {
     super();
     this.name = 'O Piece';
     this.indexOfPivotPoint = 0;
+    this.color = '#C72BCC';
     this.location = [{
       ...coordinates
     }, {
