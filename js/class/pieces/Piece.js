@@ -17,16 +17,22 @@ class Piece {
     return [...this.location];
   }
 
-  rotate(objectShapePerState){
-    //objectShapePerState structure: { default: [objectShape], rotated: [objectShape] }
+  rotate(){
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
-    if(this.state === 'default'){
-      this.location = objectShapePerState.rotated;
-      this.state = 'rotated';
-    } else {
-      this.location = objectShapePerState.default;
-      this.state = 'default';
-    }
+    const pivotPoint = this.location[this.indexOfPivotPoint];
+    console.log('pivotPoint: ', pivotPoint)
+    const newLocation = this.location.map(p => {
+      if(p.x === pivotPoint.x && p.y === pivotPoint.y){
+        return p
+      }
+      const pSubtractedWithPivotPoint = { x: p.x - pivotPoint.x, y: p.y - pivotPoint.y};
+      const rotatedP = { x: pSubtractedWithPivotPoint.y, y: -pSubtractedWithPivotPoint.x};
+      rotatedP.x += pivotPoint.x;
+      rotatedP.y += pivotPoint.y;
+      return rotatedP;
+    })
+    this.location = newLocation;
+    return [...this.location];
   }
 
   moveDown(){
