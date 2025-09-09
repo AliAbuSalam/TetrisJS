@@ -1,12 +1,12 @@
 import Piece from './Piece.js';
-import { NUMBER_OF_COLUMNS } from '../../CONSTANTS.js';
+import { J_PIECE_COLOR } from '../../CONSTANTS.js';
 
 class PieceJ extends Piece {
   constructor(coordinates){
     super();
     this.name = 'J Piece';
     this.indexOfPivotPoint = 0;
-    console.log('coordinates:', coordinates);
+    this.color = J_PIECE_COLOR;
     this.location = [{
       ...coordinates,
       y: coordinates.y - 1
