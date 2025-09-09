@@ -3,6 +3,7 @@ class Piece {
   location = [];
   state = 'default';
   indexOfPivotPoint;
+  color;
   constructor(){
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
