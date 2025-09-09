@@ -7,7 +7,7 @@ class PieceO extends Piece {
     super();
     this.name = 'O Piece';
     this.indexOfPivotPoint = 0;
-    this.color = '#C72BCC';
+    this.color = O_PIECE_COLOR
     this.location = [{
       ...coordinates
     }, {
