@@ -1,15 +1,12 @@
-import { NUMBER_OF_COLUMNS } from "../../CONSTANTS.js";
-
 class Piece {
   name = 'Tetris Piece'
   location = [];
   state = 'default';
-  pivotPoint;
-  constructor(coordinates){
+  indexOfPivotPoint;
+  constructor(){
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
     }
-        this.pivotPoint = coordinates;
   }
 
   getName(){
