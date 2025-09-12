@@ -19,7 +19,7 @@ class Field {
       const rowObj = new VisibleRow(i, columns);
       this.field.appendChild(rowObj.rowElement);
     }
-    for(let i = 0; i < hiddenRows + rows; i++){
+    for(let i = 0; i < hiddenRows + rows; i++){//create 2d array
       const rowState = [];
       for(let j = 0; j < columns; j++){
         rowState.push(0)
