@@ -21,8 +21,8 @@ class Piece {
 
   rotate(){
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
+    this.previousLocation = this.location;
     const pivotPoint = this.location[this.indexOfPivotPoint];
-    console.log('pivotPoint: ', pivotPoint)
     const newLocation = this.location.map(p => {
       if(p.x === pivotPoint.x && p.y === pivotPoint.y){
         return p
@@ -38,14 +38,17 @@ class Piece {
   }
 
   moveDown(){
+    this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, y: c.y - 1}))
   }
 
   moveLeft(){
+    this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, x: c.x - 1}));
   }
 
   moveRight(){
+    this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, x: c.x + 1}));
   }
 }
