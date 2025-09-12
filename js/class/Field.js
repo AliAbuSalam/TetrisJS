@@ -3,6 +3,7 @@ import HiddenRow from './HiddenRow.js';
 import { NUMBER_OF_COLUMNS, NUMBER_OF_VISIBLE_ROWS, NUMBER_OF_HIDDEN_ROWS } from '../CONSTANTS.js';
 
 class Field {
+  fieldState = [];
   static spawnCoordinates = {
     x: Math.ceil((NUMBER_OF_COLUMNS - 1)/2), // number of columns is substracted by one because the coordinates starts at 0
     y: NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1
@@ -17,6 +18,13 @@ class Field {
     for(let i = rows - 1; i >= 0; i--){
       const rowObj = new VisibleRow(i, columns);
       this.field.appendChild(rowObj.rowElement);
+    }
+    for(let i = 0; i < hiddenRows + rows; i++){
+      const rowState = [];
+      for(let j = 0; j < columns; j++){
+        rowState.push(0)
+      }
+      this.fieldState.push(rowState);
     }
   }
 
