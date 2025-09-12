@@ -51,6 +51,11 @@ class Piece {
     this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, x: c.x + 1}));
   }
+
+  revertLocation(){
+    this.location = this.previousLocation;
+    return [...this.location];
+  }
 }
 
 export default Piece;
