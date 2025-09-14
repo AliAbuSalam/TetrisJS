@@ -28,8 +28,13 @@ class Field {
     }
   }
 
-
-
+  checkGridAvailability(coordinates){
+    const gridAvailability = [];
+    coordinates.forEach(c => {
+      gridAvailability.push(this.fieldState[c.y][c.x]);
+    })
+    return gridAvailability;
+  }
 } 
 
 export default Field;
