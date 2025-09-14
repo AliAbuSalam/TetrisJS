@@ -28,17 +28,8 @@ class Field {
     }
   }
 
-  getRightBound(){
-    return [...this.rightBound];
-  }
 
-  getLeftBound(){
-    return [...this.leftBound];
-  }
 
-  getBottomBound(){
-    return [...this.bottomBound];
-  }
 } 
 
 export default Field;
