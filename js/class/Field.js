@@ -8,6 +8,10 @@ class Field {
     x: Math.ceil((NUMBER_OF_COLUMNS - 1)/2), // number of columns is substracted by one because the coordinates starts at 0
     y: NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1
   }
+  xLowerBound = 0;
+  xUpperBound = NUMBER_OF_COLUMNS - 1;
+  ylowerBound = 0;
+  yUpperBound = NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1;
 
   constructor(rows, columns, hiddenRows){
     this.field = document.getElementsByClassName('field')[0];
@@ -29,11 +33,23 @@ class Field {
   }
 
   checkGridAvailability(coordinates){
+    console.log('coordinates: ', coordinates)
     const gridAvailability = [];
-    coordinates.forEach(c => {
-      gridAvailability.push(this.fieldState[c.y][c.x]);
+    const filteredCoordinates = this.#checkCoordinatesValidity(coordinates);
+    filteredCoordinates.forEach(c => {
+      const valueToPush = !c.x || !c.y ? false : this.fieldState[c.y][c.x];
+      gridAvailability.push(valueToPush);
     })
     return gridAvailability;
+  }
+
+  #checkCoordinatesValidity(coordinates){
+    return coordinates.map(c => {
+      return ({
+        x: c.x < this.xLowerBound || c.x > this.xUpperBound ? false : c.x,
+        y: c.y < this.yLowerBound || c.y > this.yUpperBound ? false : c.y
+      });
+    })
   }
 } 
 
