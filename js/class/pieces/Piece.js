@@ -40,16 +40,19 @@ class Piece {
   moveDown(){
     this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, y: c.y - 1}))
+    return this.location;
   }
 
   moveLeft(){
     this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, x: c.x - 1}));
+    return this.location;
   }
 
   moveRight(){
     this.previousLocation = this.location;
     this.location = this.location.map(c => ({...c, x: c.x + 1}));
+    return this.location;
   }
 
   revertLocation(){
