@@ -10,3 +10,6 @@ export const O_PIECE_COLOR = '#C72BCC';
 export const S_PIECE_COLOR = '#2BCCBF';
 export const T_PIECE_COLOR = '#F2E316';
 export const Z_PIECE_COLOR = '#ED9018';
+
+export const BASE_SPEED = 1000;
+export const SPEED_INTERVAL = 50;
