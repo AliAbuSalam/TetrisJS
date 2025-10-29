@@ -1,4 +1,8 @@
 import { BASE_SPEED, SPEED_INTERVAL } from "../CONSTANTS.js";
+const GameState = {
+  Active: 'Active',
+  Inactive: 'Inactive',
+}
 class GameEnvironment {
   constructor(field){
     this.level = 1;
@@ -7,6 +11,7 @@ class GameEnvironment {
     this.speedInterval = SPEED_INTERVAL;
     this.activePiece;
     this.field = field;
+    this.gameState = GameState.Inactive;
   }
 
   setActivePiece(piece){
@@ -16,6 +21,7 @@ class GameEnvironment {
   }
 
   moveActivePiece(){
+    this.gameState = GameState.Active;
     const activePiece = this.activePiece;
     const intervalId = setInterval(() => {
       const coordinates = activePiece.moveDown();
@@ -26,9 +32,14 @@ class GameEnvironment {
       }, true)
       if(!moveValidity){
         activePiece.revertLocation();
+        this.gameState = GameState.Inactive;
         clearInterval(intervalId)
       }
     }, 1000)
+  }
+
+  getGameState(){
+    return this.gameState;
   }
 }
 
