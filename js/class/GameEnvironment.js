@@ -52,6 +52,10 @@ class GameEnvironment {
   getGameState(){
     return this.gameState;
   }
+
+  getActivePieceState(){
+    return this.activePieceState;
+  }
 }
 
 export default GameEnvironment;
