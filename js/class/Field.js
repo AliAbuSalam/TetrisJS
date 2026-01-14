@@ -33,7 +33,6 @@ class Field {
   }
 
   checkGridAvailability(coordinates){
-    console.log('coordinates: ', coordinates)
     const gridAvailability = [];
     const filteredCoordinates = this.#checkCoordinatesValidity(coordinates);
     filteredCoordinates.forEach(c => {
@@ -50,6 +49,18 @@ class Field {
         y: c.y < this.yLowerBound || c.y > this.yUpperBound ? false : c.y
       });
     })
+  }
+
+  renderField(){
+    for(let i = 0; i < NUMBER_OF_VISIBLE_ROWS; i++){
+      const row = this.fieldState[i]
+      const rowIndex = i;
+      row.forEach((b, blockIndex) => {
+        const blockNumber = (rowIndex * 10) + blockIndex;
+        const blockElement = document.getElementById(`block-${blockNumber}`)
+        blockElement.style.backgroundColor = b !== 0 ? b : '';
+      })
+    }
   }
 } 
 
