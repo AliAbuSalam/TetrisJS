@@ -29,7 +29,6 @@ class GameEnvironment {
   }
 
   moveActivePiece(){
-    console.log('active piece: ', this.activePiece)
     this.gameState = GameState.Active;
     const intervalId = setInterval(() => {
       this.activePieceState = ActivePieceState.Moving;
@@ -44,6 +43,11 @@ class GameEnvironment {
         this.gameState = GameState.Inactive;
         this.activePieceState = undefined;
         clearInterval(intervalId)
+      } else {
+        this.field.renderPiece({
+          coordinates: this.activePiece.getLocation(),
+          color: this.activePiece.getColor()
+        })
       }
       this.activePieceState = ActivePieceState.Idle;
     }, 1000)
