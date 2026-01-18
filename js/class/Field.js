@@ -49,6 +49,7 @@ class Field {
         y: c.y < this.yLowerBound || c.y > this.yUpperBound ? false : c.y
       });
     })
+    
   }
 
   renderField(){
@@ -61,6 +62,35 @@ class Field {
         blockElement.style.backgroundColor = b !== 0 ? b : '';
       })
     }
+  }
+
+  renderPiece({ coordinates, color }){
+    //don't forget to change validate the hidden row coordinates
+    const cValidity = this.#checkCoordinatesValidity(coordinates);
+    const cValidityResult = cValidity.filter(c => {
+      if(c.x && c.y){
+        return false
+      } else true
+    })
+    if(cValidityResult.length !== 0){
+      throw new Error ('coordinates is not valid');
+    }
+    const blocksToRender = coordinates.map(c => {
+      const blockNumber = c.y*10 + c.x;
+      console.log('blocknumber: ', blockNumber)
+      const block = document.getElementById(`block-${blockNumber}`);
+      console.log('current background color: ', block.style.backgroundColor)
+      if(block.style.backgroundColor !== ''){
+        throw new Error(`block-${blockNumber} is already occupied`);
+      }
+      return block
+    })
+
+    blocksToRender.forEach(block => {
+      console.log('block: ', block)
+      console.log('color: ', color)
+      block.style.color = color
+    })
   }
 } 
 
