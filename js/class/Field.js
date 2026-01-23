@@ -75,7 +75,8 @@ class Field {
     if(cValidityResult.length !== 0){
       throw new Error ('coordinates is not valid');
     }
-    const blocksToRender = coordinates.map(c => {
+    const coordinatesWithoutHiddenRows = coordinates.filter(c => c.y < NUMBER_OF_VISIBLE_ROWS);
+    const blocksToRender = coordinatesWithoutHiddenRows.map(c => {
       const blockNumber = c.y*10 + c.x;
       console.log('blocknumber: ', blockNumber)
       const block = document.getElementById(`block-${blockNumber}`);
