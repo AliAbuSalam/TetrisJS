@@ -88,6 +88,10 @@ class Field {
     blocksToRender.forEach(block => {
       block.style.color = color
     })
+    return {
+      status: 'success',
+      message: ''
+    }
   }
 } 
 
