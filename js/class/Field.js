@@ -80,7 +80,10 @@ class Field {
       const blockNumber = c.y*10 + c.x;
       const block = document.getElementById(`block-${blockNumber}`);
       if(block.style.backgroundColor !== ''){
-        throw new Error(`block-${blockNumber} is already occupied`);
+        return {
+          status: 'error',
+          message: `block-${blockNumber} is already occupied`
+        }
       }
       return block
     })
