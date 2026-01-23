@@ -10,7 +10,7 @@ class Field {
   }
   xLowerBound = 0;
   xUpperBound = NUMBER_OF_COLUMNS - 1;
-  ylowerBound = 0;
+  yLowerBound = 0;
   yUpperBound = NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 1;
 
   constructor(rows, columns, hiddenRows){
