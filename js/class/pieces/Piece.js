@@ -4,6 +4,7 @@ class Piece {
   state = 'default';
   indexOfPivotPoint;
   color;
+  tryLocation = [];
   previousLocation = [];
   constructor(){
     if(this.constructor === 'Piece'){
@@ -41,28 +42,26 @@ class Piece {
     return [...this.location];
   }
 
-  moveDown(){
-    this.previousLocation = this.location;
-    this.location = this.location.map(c => ({...c, y: c.y - 1}))
+  tryMoveDown(){
+    this.tryLocation = this.location.map(c => ({...c, y: c.y - 1}))
+    return this.tryLocation;
+  }
+
+  tryMoveLeft(){
+    this.tryLocation = this.location.map(c => ({...c, x: c.x - 1}));
+    return this.tryLocation;
+  }
+
+  tryMoveRight(){
+    this.tryLocation = this.location.map(c => ({...c, x: c.x + 1}));
+    return this.tryLocation;
+  }
+
+  updateLocation(){
+    this.location = this.tryLocation;
     return this.location;
   }
 
-  moveLeft(){
-    this.previousLocation = this.location;
-    this.location = this.location.map(c => ({...c, x: c.x - 1}));
-    return this.location;
-  }
-
-  moveRight(){
-    this.previousLocation = this.location;
-    this.location = this.location.map(c => ({...c, x: c.x + 1}));
-    return this.location;
-  }
-
-  revertLocation(){
-    this.location = this.previousLocation;
-    return [...this.location];
-  }
 }
 
 export default Piece;
