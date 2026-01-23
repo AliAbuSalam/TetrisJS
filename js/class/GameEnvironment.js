@@ -32,18 +32,18 @@ class GameEnvironment {
     this.gameState = GameState.Active;
     const intervalId = setInterval(() => {
       this.activePieceState = ActivePieceState.Moving;
-      const coordinates = this.activePiece.moveDown();
+      const coordinates = this.activePiece.tryMoveDown();
       const gridAvailability = this.field.checkGridAvailability(coordinates);
       const moveValidity = gridAvailability.reduce((prevValue, value) => {
         return (value === 0) && prevValue
         //if any of the value is not equal 0, then the move isn't valid
       }, true)
       if(!moveValidity){
-        this.activePiece.revertLocation();
         this.gameState = GameState.Inactive;
         this.activePieceState = undefined;
         clearInterval(intervalId)
       } else {
+        this.activePiece.updateLocation();
         this.field.renderPiece({
           coordinates: this.activePiece.getLocation(),
           color: this.activePiece.getColor()
