@@ -78,9 +78,7 @@ class Field {
     const coordinatesWithoutHiddenRows = coordinates.filter(c => c.y < NUMBER_OF_VISIBLE_ROWS);
     const blocksToRender = coordinatesWithoutHiddenRows.map(c => {
       const blockNumber = c.y*10 + c.x;
-      console.log('blocknumber: ', blockNumber)
       const block = document.getElementById(`block-${blockNumber}`);
-      console.log('current background color: ', block.style.backgroundColor)
       if(block.style.backgroundColor !== ''){
         throw new Error(`block-${blockNumber} is already occupied`);
       }
@@ -88,8 +86,6 @@ class Field {
     })
 
     blocksToRender.forEach(block => {
-      console.log('block: ', block)
-      console.log('color: ', color)
       block.style.color = color
     })
   }
