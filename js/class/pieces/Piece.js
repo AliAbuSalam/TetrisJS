@@ -18,6 +18,10 @@ class Piece {
   getLocation(){
     return [...this.location];
   }
+  
+  getColor(){
+    return this.color;
+  }
 
   rotate(){
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
