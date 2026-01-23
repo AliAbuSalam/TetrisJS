@@ -21,9 +21,6 @@ class PieceJ extends Piece {
     }];
   }
 
-  move(){
-    
-  }
 }
 
 export default PieceJ;
