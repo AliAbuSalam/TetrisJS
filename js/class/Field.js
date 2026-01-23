@@ -36,7 +36,7 @@ class Field {
     const gridAvailability = [];
     const filteredCoordinates = this.#checkCoordinatesValidity(coordinates);
     filteredCoordinates.forEach(c => {
-      const valueToPush = !c.x || !c.y ? false : this.fieldState[c.y][c.x];
+      const valueToPush = c.x === false || c.y === false ? false : this.fieldState[c.y][c.x];
       gridAvailability.push(valueToPush);
     })
     return gridAvailability;
