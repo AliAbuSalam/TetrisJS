@@ -45,6 +45,7 @@ class GameEnvironment {
       } else {
         this.activePiece.updateLocation();
         this.field.renderPiece({
+          prevCoordinates,
           coordinates: this.activePiece.getLocation(),
           color: this.activePiece.getColor()
         })

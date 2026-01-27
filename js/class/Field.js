@@ -64,33 +64,55 @@ class Field {
     }
   }
 
-  renderPiece({ coordinates, color }){
+  renderPiece({ prevCoordinates, coordinates, color }){
     //don't forget to change validate the hidden row coordinates
-    const cValidity = this.#checkCoordinatesValidity(coordinates);
-    const cValidityResult = cValidity.filter(c => {
-      if(c.x && c.y){
-        return false
-      } else true
-    })
-    if(cValidityResult.length !== 0){
+    const prevCValidity = this.#checkCoordinatesValidityBool(prevCoordinates);
+    if(!prevCValidity){
+      throw new Error('prevCoordinates is not valid');
+    }
+    const cValidity = this.#checkCoordinatesValidityBool(coordinates);    
+    if(!cValidity){
       throw new Error ('coordinates is not valid');
     }
-    const coordinatesWithoutHiddenRows = coordinates.filter(c => c.y < NUMBER_OF_VISIBLE_ROWS);
-    const blocksToRender = coordinatesWithoutHiddenRows.map(c => {
+
+    const filterHiddenRowCoordinates = (coor) => coor.filter(c => c.y < NUMBER_OF_VISIBLE_ROWS);
+    const coordinatesWithoutHiddenRows = filterHiddenRowCoordinates(coordinates);
+    const prevCWithoutHiddenRows = filterHiddenRowCoordinates(prevCoordinates);
+
+    const blockNumbersToRender = coordinatesWithoutHiddenRows.map(c => c.y*10 + c.x);
+    const blocksToClear = prevCWithoutHiddenRows.map(c => c.y*10 + c.x)
+      .filter(blockNumber => !blockNumbersToRender.includes(blockNumber))
+      .map(blockNumber => {
+        const block = document.getElementById(`block-${blockNumber}`);
+        return block;// <----------------------THIS IS WHERE I WAS-----------------------------
+    })
+
+    const blocksToRender = [];
+    let failedToRenderObj = undefined;
+
+    for (const c of coordinatesWithoutHiddenRows){
       const blockNumber = c.y*10 + c.x;
       const block = document.getElementById(`block-${blockNumber}`);
       if(block.style.backgroundColor !== ''){
-        return {
+        failedToRenderObj = {
           status: 'error',
           message: `block-${blockNumber} is already occupied`
         }
+        break;
+      } else {
+        blocksToRender.push(block);
       }
-      return block
-    })
+    }
 
-    blocksToRender.forEach(block => {
-      block.style.color = color
-    })
+    if(failedToRenderObj){
+      return failedToRenderObj
+    }
+
+    const updateBlockDOM = (block, type) => block.style.color = type === 'clear' ? '' : color;
+    
+    blocksToClear.forEach((block) => updateBlockDOM(block, 'clear'));
+
+    blocksToRender.forEach((block) => updateBlockDOM(block, 'render'));
     return {
       status: 'success',
       message: ''
