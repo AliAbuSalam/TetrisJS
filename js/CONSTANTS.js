@@ -13,3 +13,8 @@ export const Z_PIECE_COLOR = '#ED9018';
 
 export const BASE_SPEED = 1000;
 export const SPEED_INTERVAL = 50;
+
+export const MOVE_DOWN_PIECE = 'k';
+export const MOVE_LEFT_PIECE = 'j';
+export const MOVE_RIGHT_PIECE = 'L';
+export const ROTATE_PIECE = 'i';
