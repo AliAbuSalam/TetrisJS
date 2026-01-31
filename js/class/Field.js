@@ -51,6 +51,15 @@ class Field {
     })
     
   }
+#checkCoordinatesValidityBool(coordinates){
+    const cValidity = this.#checkCoordinatesValidity(coordinates);
+    const cValidityResult = cValidity.filter(c => {
+      if(c.x && c.y){
+        return false
+      } else true
+    })
+    return cValidityResult.length === 0
+  }
 
   renderField(){
     for(let i = 0; i < NUMBER_OF_VISIBLE_ROWS; i++){
