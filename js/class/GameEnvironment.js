@@ -5,6 +5,7 @@ const GameState = {
                         //It means that the game is in the middle of preparing the next active piece or calculating score, etc.
   End: 'End', //End game state means that the game has ended.
 }
+
 const ActivePieceState = {
   Initialized: 'Initialized',
   Moving: 'Moving',
@@ -21,6 +22,7 @@ class GameEnvironment {
     this.field = field;
     this.gameState = GameState.Inactive;
     this.activePieceState = undefined;
+    this.allowPlayerMovement = true;
   }
 
   setActivePiece(piece){
@@ -33,25 +35,54 @@ class GameEnvironment {
     const intervalId = setInterval(() => {
       this.activePieceState = ActivePieceState.Moving;
       const coordinates = this.activePiece.tryMoveDown();
-      const gridAvailability = this.field.checkGridAvailability(coordinates);
-      const moveValidity = gridAvailability.reduce((prevValue, value) => {
-        return (value === 0) && prevValue
-        //if any of the value is not equal 0, then the move isn't valid
-      }, true)
+      const moveValidity = this.#checkMoveValidity(coordinates)
       if(!moveValidity){
         this.gameState = GameState.Inactive;
         this.activePieceState = undefined;
         clearInterval(intervalId)
+        return;
       } else {
-        this.activePiece.updateLocation();
-        this.field.renderPiece({
-          prevCoordinates,
-          coordinates: this.activePiece.getLocation(),
-          color: this.activePiece.getColor()
-        })
+        this.#renderMovement(this.activePiece);
+        this.activePieceState = ActivePieceState.Idle;
       }
-      this.activePieceState = ActivePieceState.Idle;
     }, 1000)
+  }
+
+  #moveActivePieceSideways(movementType){
+    if(movementType !== 'moveRight' && movementType !== 'moveLeft'){
+      console.log('movement type wrong')
+      throw new Error('movement type has to be  right or left');
+    }
+    this.activePieceState = ActivePieceState.Moving;
+    console.log('activePieceState: ', this.activePieceState);
+    const coordinates = movementType === 'moveRight' ? this.activePiece.tryMoveRight() : this.activePiece.tryMoveLeft();
+    const moveValidity = this.#checkMoveValidity(coordinates);
+    console.log('moveValidity: ', moveValidity)
+    if(moveValidity){
+      this.#renderMovement(this.activePiece);
+    }
+    this.activePieceState = ActivePieceState.Idle;
+  }
+
+  #checkMoveValidity(coordinates){
+    const gridAvailability = this.field.checkGridAvailability(coordinates);
+    return gridAvailability.reduce((prevValue, value) => {
+      return (value === 0) && prevValue
+      //if any of the value is not equal 0, then the move isn't valid
+    }, true)
+  }
+
+  #renderMovement(piece){
+    const prevCoordinates = piece.getLocation();
+    piece.updateLocation();
+    this.field.renderPiece({
+      prevCoordinates,
+      coordinates: piece.getLocation(),
+      color: piece.getColor()
+    })
+    return {
+      status: 'success'
+    }
   }
 
   getGameState(){
@@ -60,6 +91,27 @@ class GameEnvironment {
 
   getActivePieceState(){
     return this.activePieceState;
+  }
+
+  handlePlayerControl(movementType){
+    console.log('object state before: ', {
+      allowPlayerMovement: this.allowPlayerMovement,
+      activePieceState: this.activePieceState,
+      gameState: this.gameState
+    })
+    if(!this.allowPlayerMovement || this.activePieceState === ActivePieceState.Moving || this.gameState !== GameState.Active){
+      return;
+    }
+    this.allowPlayerMovement = false;
+    console.log('allowPlayerMovement: ', this.allowPlayerMovement)
+    switch(movementType){
+      case 'moveRight':
+        this.#moveActivePieceSideways('moveRight');
+        break;
+      case 'moveLeft':
+        this.#moveActivePieceSideways('moveLeft');
+    }
+    this.allowPlayerMovement = true;
   }
 }
 
