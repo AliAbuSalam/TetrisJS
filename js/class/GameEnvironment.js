@@ -99,6 +99,7 @@ class GameEnvironment {
     switch(movementType){
       case 'moveRight':
         this.#moveActivePieceSideways('moveRight');
+        break;
       case 'moveLeft':
         this.#moveActivePieceSideways('moveLeft');
     }
