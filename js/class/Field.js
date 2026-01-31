@@ -93,7 +93,7 @@ class Field {
       .filter(blockNumber => !blockNumbersToRender.includes(blockNumber))
       .map(blockNumber => {
         const block = document.getElementById(`block-${blockNumber}`);
-        return block;// <----------------------THIS IS WHERE I WAS-----------------------------
+        return block;
     })
 
     const blocksToRender = [];
