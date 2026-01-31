@@ -50,14 +50,11 @@ class GameEnvironment {
 
   #moveActivePieceSideways(movementType){
     if(movementType !== 'moveRight' && movementType !== 'moveLeft'){
-      console.log('movement type wrong')
       throw new Error('movement type has to be  right or left');
     }
     this.activePieceState = ActivePieceState.Moving;
-    console.log('activePieceState: ', this.activePieceState);
     const coordinates = movementType === 'moveRight' ? this.activePiece.tryMoveRight() : this.activePiece.tryMoveLeft();
     const moveValidity = this.#checkMoveValidity(coordinates);
-    console.log('moveValidity: ', moveValidity)
     if(moveValidity){
       this.#renderMovement(this.activePiece);
     }
@@ -94,20 +91,14 @@ class GameEnvironment {
   }
 
   handlePlayerControl(movementType){
-    console.log('object state before: ', {
-      allowPlayerMovement: this.allowPlayerMovement,
-      activePieceState: this.activePieceState,
-      gameState: this.gameState
-    })
+
     if(!this.allowPlayerMovement || this.activePieceState === ActivePieceState.Moving || this.gameState !== GameState.Active){
       return;
     }
     this.allowPlayerMovement = false;
-    console.log('allowPlayerMovement: ', this.allowPlayerMovement)
     switch(movementType){
       case 'moveRight':
         this.#moveActivePieceSideways('moveRight');
-        break;
       case 'moveLeft':
         this.#moveActivePieceSideways('moveLeft');
     }
