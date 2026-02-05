@@ -35,7 +35,12 @@ class Field {
 
   checkGridAvailability(coordinates){
     const gridAvailability = [];
-    const filteredCoordinates = this.#checkCoordinatesValidity(coordinates);
+    let filteredCoordinates;
+    if(movementType !== 'rotate'){
+      filteredCoordinates = this.#checkCoordinatesValidity(coordinates);
+    } else {
+      filteredCoordinates = coordinates;
+    }
     filteredCoordinates.forEach(c => {
       const valueToPush = c.x === false || c.y === false ? false : this.fieldState[c.y][c.x];
       gridAvailability.push(valueToPush);
