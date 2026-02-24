@@ -5,7 +5,7 @@ class Piece {
   indexOfPivotPoint;
   color;
   tryLocation = [];
-  previousLocation = [];
+  #previousLocation = [];
   constructor(){
     if(this.constructor === 'Piece'){
       throw new Error('Abstract Class can\'t be instantiated')
@@ -24,11 +24,11 @@ class Piece {
     return this.color;
   }
 
-  rotate(){
+  tryRotate(){
     if(this.constructor === 'Piece') throw new Error('Rotate method can\'t be called on Abstract Class');
-    this.previousLocation = this.location;
+    // this.previousLocation = this.location;
     const pivotPoint = this.location[this.indexOfPivotPoint];
-    const newLocation = this.location.map(p => {
+    this.tryLocation = this.location.map(p => {
       if(p.x === pivotPoint.x && p.y === pivotPoint.y){
         return p
       }
@@ -38,8 +38,10 @@ class Piece {
       rotatedP.y += pivotPoint.y;
       return rotatedP;
     })
-    this.location = newLocation;
-    return [...this.location];
+    return {
+      coordinates: [...this.tryLocation],
+      pivotIndex: this.indexOfPivotPoint
+    };
   }
 
   tryMoveDown(){
@@ -60,6 +62,10 @@ class Piece {
   updateLocation(){
     this.location = this.tryLocation;
     return this.location;
+  }
+  rotatePiece(coordinates){
+    this.location = coordinates;
+    return coordinates;
   }
 
 }
