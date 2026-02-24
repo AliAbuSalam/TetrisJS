@@ -55,8 +55,69 @@ class Field {
         y: c.y < this.yLowerBound || c.y > this.yUpperBound ? false : c.y
       });
     })
-    
   }
+
+  checkRotateGridAvailability(c, pivotIndex){
+    let coordinates = c;
+    let numberOfShiftTries = 0;
+    const outOfBoundCoordinatesIndexes = [];
+    coordinates.forEach((c, i) => {
+      if(c.x < this.xLowerBound || c.x > this.xUpperBound){
+        outOfBoundCoordinatesIndexes.push(i);
+      }
+    })
+
+    if(outOfBoundCoordinatesIndexes.length > 0){
+      if(coordinates[outOfBoundCoordinatesIndexes[0]].x < coordinates[pivotIndex].x){
+        //this means the piece is hitting the left side of the field. we're shifting it to the right
+        let coordinatesWithTheSmallestX = coordinates[outOfBoundCoordinatesIndexes[0]]
+        outOfBoundCoordinatesIndexes.forEach((ci, i) => {
+          if(i === 0){
+            return
+          }
+          const currentCoordinates = coordinates[ci];
+          coordinatesWithTheSmallestX = currentCoordinates < coordinatesWithTheSmallestX 
+            ? currentCoordinates : coordinatesWithTheSmallestX;
+        })
+        const numberOfBlockShift = this.xLowerBound - coordinatesWithTheSmallestX.x 
+        coordinates = coordinates.map(c => ({ ...c, x : c.x + numberOfBlockShift}));
+      } else {
+        //this means the piece is hitting the right side of the field. we're shifting it to the left
+        let coordinatesWithTheBiggestX = coordinates[outOfBoundCoordinatesIndexes[0]];
+        outOfBoundCoordinatesIndexes.forEach((ci, i) => {
+          if(i === 0){
+            return
+          }
+          const currentCoordinates = coordinates[ci];
+          coordinatesWithTheBiggestX = currentCoordinates > coordinatesWithTheBiggestX
+            ? currentCoordinates : coordinatesWithTheBiggestX;
+        })
+        const numberOfBlockShift = coordinatesWithTheBiggestX.x - this.xUpperBound;
+        coordinates = coordinates.map(c => ({ ...c, x: c.x - numberOfBlockShift}));
+      }
+      numberOfShiftTries++;
+    }
+    const gridAvailability = this.checkGridAvailability(coordinates, 'rotate');
+    const occupiedBlocks = gridAvailability.filter(blockValue  => blockValue !== 0);
+    if(occupiedBlocks.length === 0){
+      return {
+        status: 'ok',
+        coordinates
+      };
+    } else if(occupiedBlocks.length > 0 && numberOfShiftTries > 0){
+      //this means there's another piece in the way of shifting. So the rotate isn't valid
+      return {
+        status: 'failed',
+      };
+    } else if(occupiedBlocks.length > 0 && numberOfShiftTries === 0){
+      const pivotPoint = coordinates[pivotIndex];
+      console.log('pivotPoint: ', pivotPoint);
+      const blockedCoordinates = occupiedBlocks.map(b => coordinates)
+      console.log('blockedCoordinates: ', blockedCoordinates)
+      console.error("FUNCTION ISN'T FINISHED YET. FINISH IT!!!!")
+    }
+  }
+
 #checkCoordinatesValidityBool(coordinates){
     const cValidity = this.#checkCoordinatesValidity(coordinates);
     const cValidityResult = cValidity.filter(c => {
