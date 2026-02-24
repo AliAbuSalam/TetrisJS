@@ -4,11 +4,11 @@ import { NUMBER_OF_COLUMNS, NUMBER_OF_VISIBLE_ROWS, NUMBER_OF_HIDDEN_ROWS } from
 
 class Field {
   fieldState = [];
-
   static spawnCoordinates = {
     x: Math.ceil((NUMBER_OF_COLUMNS - 1)/2), // number of columns is substracted by one because the coordinates starts at 0
     y: NUMBER_OF_VISIBLE_ROWS + NUMBER_OF_HIDDEN_ROWS - 2
   }
+
   xLowerBound = 0;
   xUpperBound = NUMBER_OF_COLUMNS - 1;
   yLowerBound = 0;
@@ -33,7 +33,7 @@ class Field {
     }
   }
 
-  checkGridAvailability(coordinates){
+  checkGridAvailability(coordinates, movementType){
     const gridAvailability = [];
     let filteredCoordinates;
     if(movementType !== 'rotate'){
@@ -118,7 +118,7 @@ class Field {
     }
   }
 
-#checkCoordinatesValidityBool(coordinates){
+  #checkCoordinatesValidityBool(coordinates){
     const cValidity = this.#checkCoordinatesValidity(coordinates);
     const cValidityResult = cValidity.filter(c => {
       if(c.x && c.y){
@@ -141,7 +141,6 @@ class Field {
   }
 
   renderPiece({ prevCoordinates, coordinates, color }){
-    //don't forget to change validate the hidden row coordinates
     const prevCValidity = this.#checkCoordinatesValidityBool(prevCoordinates);
     if(!prevCValidity){
       throw new Error('prevCoordinates is not valid');
