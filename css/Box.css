@@ -1,0 +1,61 @@
+.box-parent {
+  position: relative;
+}
+
+.box-child-vertical {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.box-child-horizontal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.box-left {
+  clip-path: polygon(
+    0% 0%,
+    50% 50%,
+    0% 100%
+  );
+}
+
+.box-right {
+  clip-path: polygon(
+    100% 0%,
+    50% 50%,
+    100% 100%
+  );
+}
+
+.box-top {
+  clip-path: polygon(
+    0% 0%,
+    50% 50%,
+    100% 0%
+  );
+}
+
+.box-bottom {
+  clip-path: polygon(
+    0% 100%,
+    50% 50%,
+    100% 100%
+  );
+  z-index: 0;
+}
+
+.box-center {
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  z-index: 1;
+  clip-path: polygon(
+    10% 10%,
+    90% 10%,
+    90% 90%,
+    10% 90%
+  );
+}
