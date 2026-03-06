@@ -9,8 +9,8 @@ class Box {
     this.element = document.createElement('div');
     this.id = `block-${id}`;
     this.element.id = this.id;
-    const blockNumber= document.createTextNode(id);
-    this.element.appendChild(blockNumber);
+    // const blockNumber= document.createTextNode(id);
+    // this.element.appendChild(blockNumber);
     this.element.className = 'field-block';
   }
 
