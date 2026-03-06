@@ -31,7 +31,6 @@ body {
 }
 
 .field-block {
-  outline: 1px solid white;
   width: var(--block-size);
   height: var(--block-size);
   margin: 0;
@@ -40,6 +39,12 @@ body {
 
 .empty {
   background-color: none;
+}
+
+.filled {
+  outline: 50% solid yellow;
+  outline-offset:-10%;
+  background-color: green;
 }
 
 .piecei {
