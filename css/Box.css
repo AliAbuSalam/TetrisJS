@@ -2,6 +2,20 @@
   position: relative;
 }
 
+.box-occupied {
+  outline: 1px solid white;
+}
+
+.filled {
+  outline: 50% solid yellow;
+  outline-offset:-10%;
+  background-color: green;
+}
+
+.empty {
+  background-color: none;
+}
+
 .box-child-vertical {
   width: 100%;
   height: 100%;
